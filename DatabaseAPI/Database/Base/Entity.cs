@@ -1,5 +1,10 @@
-﻿namespace DatabaseAPI.Database.Base
+﻿using System.Diagnostics;
+
+namespace DatabaseAPI.Database.Base
 {
+  // Taka ciekawostka, jeśli przeciążasz ToString aby widzieć pola w debuggerze
+  // Lepiej użyć atrybutu [DebuggerDisplay] a to string zostawić do innych celów
+  [DebuggerDisplay("To zobaczysz w debugerze zamiast wartości ToSting. Id: {Id}")]
   public abstract class Entity
   {
     public virtual int Id { get; set; }

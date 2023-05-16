@@ -1,7 +1,9 @@
 ﻿namespace DatabaseAPI.Database.Entities.ValueObjects
 {
     // From: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/implement-value-objects
-    public abstract class ValueObject
+    
+    // Przy okazji: choć nie jest to tematem tego projektu, dla Value object warto implementować interfejsy IComparable oraz IEquatable 
+    public abstract class ValueObject 
     {
         public static bool operator !=(ValueObject? obj1, ValueObject? obj2) => !(obj1 == obj2);
 

@@ -19,6 +19,7 @@ namespace DatabaseAPI.Database.Model.ProductCategories
     protected abstract Task<ProductCategory> CreateBaseAsync(string name, string? description);
   }
 
+  // Po co proxy do tworzenia encji?
   public class ProductCategoryProxyFactory : ProductCategoryFactory
   {
     private readonly ApplicationDbContext _context;

@@ -20,6 +20,10 @@ namespace DatabaseAPI.BL.Handlers.ProductCategories
 
     public async Task<ProductCategoryDTO> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
     {
+      // W sytuacji, gdy potrzebujesz zmienić jakieś pole w obiekcie pobieranym z DB po kluczu głównym, lepiej użyć FindAsync (i obsłużyć NULL).
+      // Ta metoda ma to do siebie, że "z pudełka" wykorzystuje cache przy pobieraniu danych.
+      // Ogólnie wszędzie tam, gdzie pojawia sę potrzeba pobrania rekordu po jego kluczu głównym Find będzie wydajniejsze niż First,
+      // (a Single należałoby wogóle unikać przy potrzebie pobrania tylko 1 rekordu)
       var currCategory = await _context.Categories.FirstAsync(x => x.Id == request.Id);
       currCategory = _mapper.Map(request, currCategory);
 
